@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React from "react";
+import styled, { keyframes } from "styled-components";
 
 const flip = keyframes`
   0%, 100% {
@@ -15,12 +15,12 @@ const flip = keyframes`
   100% {
     transform: rotateY(3600deg);
   }
-`
+`;
 
 const Root = styled.div`
   display: inline-block;
   transform: translateZ(1px);
-`
+`;
 
 const Content = styled.div`
   display: inline-block;
@@ -30,15 +30,14 @@ const Content = styled.div`
   border-radius: 50%;
   background: ${({ theme }) => theme.colors.gray.normal};
   animation: ${flip} 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-`
-
+`;
 
 function LoadingIndicator() {
   return (
     <Root>
       <Content />
     </Root>
-  )
+  );
 }
 
 export default LoadingIndicator;

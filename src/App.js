@@ -1,21 +1,17 @@
-import React, { Fragment } from 'react';
-import { ThemeProvider } from 'styled-components';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import { useTranslation } from 'react-i18next';
-import { ReactQueryConfigProvider } from 'react-query'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { Fragment } from "react";
+import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { ReactQueryConfigProvider } from "react-query";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import GlobalStyles from './index.css';
+import GlobalStyles from "./index.css";
 
-import theme from 'utils/theme';
+import theme from "utils/theme";
 
-import { Navigation, Wrapper, LoadingIndicator, Button } from 'components'
-import Budget from 'pages/Budget';
+import { Navigation, Wrapper, LoadingIndicator, Button } from "components";
+import Budget from "pages/Budget";
 
 toast.configure();
 
@@ -29,15 +25,25 @@ function App({ budget, fetchBudget, fetchBudgetedCategories }) {
       <Router>
         <Navigation
           items={[
-            { content: 'Homepage', to: '/' },
-            { content: 'Budget', to: '/budget' }
+            { content: "Homepage", to: "/" },
+            { content: "Budget", to: "/budget" },
           ]}
-          RightElement={(
+          RightElement={
             <div>
-              <Button variant="regular" onClick={() => i18n.changeLanguage('pl')}>pl</Button>
-              <Button variant="regular" onClick={() => i18n.changeLanguage('en')}>en</Button>
+              <Button
+                variant="regular"
+                onClick={() => i18n.changeLanguage("pl")}
+              >
+                pl
+              </Button>
+              <Button
+                variant="regular"
+                onClick={() => i18n.changeLanguage("en")}
+              >
+                en
+              </Button>
             </div>
-          )}
+          }
         />
 
         <Wrapper>
@@ -58,7 +64,7 @@ function App({ budget, fetchBudget, fetchBudgetedCategories }) {
 const queryConfig = {
   suspense: true,
   refetchAllOnWindowFocus: false,
-}
+};
 
 function RootApp() {
   return (
@@ -69,7 +75,7 @@ function RootApp() {
         </React.Suspense>
       </ThemeProvider>
     </ReactQueryConfigProvider>
-  )
+  );
 }
 
 export default RootApp;

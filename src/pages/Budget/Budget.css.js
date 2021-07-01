@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Grid = styled.div`
   display: flex;
@@ -10,4 +10,4 @@ export const Grid = styled.div`
   section:nth-child(2) {
     flex: 8;
   }
-`
+`;

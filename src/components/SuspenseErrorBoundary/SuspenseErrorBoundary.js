@@ -1,7 +1,7 @@
-import React from 'react';
-import { refetchAllQueries } from 'react-query';
+import React from "react";
+import { refetchAllQueries } from "react-query";
 
-import { LoadingIndicator, Button } from 'components';
+import { LoadingIndicator, Button } from "components";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -20,24 +20,22 @@ class ErrorBoundary extends React.Component {
   tryAgain = async () => {
     await refetchAllQueries({ includeInactive: true });
     this.setState({ hasError: false });
-  }
+  };
 
   render() {
     return (
       <React.Suspense fallback={<LoadingIndicator />}>
         {this.state.hasError ? (
           <div>
-            Something went wrong! <Button onClick={this.tryAgain}>Try again!</Button>
+            Something went wrong!{" "}
+            <Button onClick={this.tryAgain}>Try again!</Button>
           </div>
         ) : (
-            <React.Fragment>
-              {this.props.children}
-            </React.Fragment>
-          )
-        }
+          <React.Fragment>{this.props.children}</React.Fragment>
+        )}
       </React.Suspense>
-    )
+    );
   }
 }
 
-export default ErrorBoundary
+export default ErrorBoundary;

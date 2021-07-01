@@ -1,26 +1,34 @@
-import React, { useMemo } from 'react';
-import { Form, Field } from 'react-final-form'
-import { groupBy, noop } from 'lodash';
+import React, { useMemo } from "react";
+import { Form, Field } from "react-final-form";
+import { groupBy, noop } from "lodash";
 
-const required = value => (value ? undefined : 'This field is Required!');
+const required = (value) => (value ? undefined : "This field is Required!");
 
-function AddTransactionForm({ onSubmit = noop, categories, groupCategoriesBy }) {
+function AddTransactionForm({
+  onSubmit = noop,
+  categories,
+  groupCategoriesBy,
+}) {
   const groupedCategoriesByParentName = groupCategoriesBy
     ? groupBy(categories, groupCategoriesBy)
     : null;
   const categoryItems = useMemo(
-    () => groupedCategoriesByParentName
-      ? Object.entries(groupedCategoriesByParentName)
-        .map(([parentName, categories]) => (
-          <optgroup key={parentName} label={parentName}>
-            {categories.map(category => (
-              <option key={category.id} value={category.id}>{category.name}</option>
-            ))}
-          </optgroup>
-        ))
-      : categories.map(category => (
-        <option value={category.id}>{category.name}</option>
-      )),
+    () =>
+      groupedCategoriesByParentName
+        ? Object.entries(groupedCategoriesByParentName).map(
+            ([parentName, categories]) => (
+              <optgroup key={parentName} label={parentName}>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </optgroup>
+            )
+          )
+        : categories.map((category) => (
+            <option value={category.id}>{category.name}</option>
+          )),
     [groupedCategoriesByParentName, categories]
   );
 
@@ -38,11 +46,20 @@ function AddTransactionForm({ onSubmit = noop, categories, groupCategoriesBy }) 
               </div>
             )}
           </Field>
-          <Field name="amount" validate={required} parse={value => parseFloat(value, 10)}>
+          <Field
+            name="amount"
+            validate={required}
+            parse={(value) => parseFloat(value, 10)}
+          >
             {({ input, meta }) => (
               <div>
                 <label>Amount</label>
-                <input {...input} type="number" step="0.01" placeholder="Amount" />
+                <input
+                  {...input}
+                  type="number"
+                  step="0.01"
+                  placeholder="Amount"
+                />
                 {meta.error && meta.touched && <span>{meta.error}</span>}
               </div>
             )}
@@ -51,9 +68,7 @@ function AddTransactionForm({ onSubmit = noop, categories, groupCategoriesBy }) 
             {({ input, meta }) => (
               <div>
                 <label>Category</label>
-                <select {...input}>
-                  {categoryItems}
-                </select>
+                <select {...input}>{categoryItems}</select>
                 {meta.error && meta.touched && <span>{meta.error}</span>}
               </div>
             )}
@@ -71,19 +86,19 @@ function AddTransactionForm({ onSubmit = noop, categories, groupCategoriesBy }) 
           <div className="buttons">
             <button type="submit" disabled={submitting}>
               Submit
-          </button>
+            </button>
             <button
               type="button"
               onClick={form.reset}
               disabled={submitting || pristine}
             >
               Reset
-          </button>
+            </button>
           </div>
         </form>
       )}
     />
-  )
+  );
 }
 
 export default AddTransactionForm;

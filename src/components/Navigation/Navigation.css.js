@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import Wrapper from '../Wrapper';
+import Wrapper from "../Wrapper";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.gray.light};
