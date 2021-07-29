@@ -27,6 +27,7 @@
     "styled-components": "^5.0.1",
     "styled-normalize": "^8.0.7"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
     "heroku-postbuild": "npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "start": "react-scripts start",
