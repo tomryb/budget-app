@@ -1,6 +1,6 @@
 export const fetchBudget = async ({ id }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/budgets/${id}/?_embed=transactions`
+    `https://tr-budget-app.herokuapp.com/api/budgets/${id}/?_embed=transactions`
   );
   const data = await response.json();
 
@@ -9,7 +9,7 @@ export const fetchBudget = async ({ id }) => {
 
 export const fetchBudgetedCategories = async ({ id }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/budgets/${id}/budgetCategories`
+    `https://tr-budget-app.herokuapp.com/api/budgets/${id}/budgetCategories`
   );
   const data = await response.json();
 
@@ -18,7 +18,7 @@ export const fetchBudgetedCategories = async ({ id }) => {
 
 export const addTransaction = async ({ budgetId, data }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/budgets/${budgetId}/transactions`,
+    `https://tr-budget-app.herokuapp.com/api/budgets/${budgetId}/transactions`,
     {
       method: "POST",
       headers: {
