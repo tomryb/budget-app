@@ -1,7 +1,8 @@
+const port = process.env.PORT || 4000;
+
 export const fetchBudget = async ({ id }) => {
   const response = await fetch(
-    `http://localhost:5000/budgets/${id}/?_embed=transactions`
-
+    `${port}/budgets/${id}/?_embed=transactions`
     // `${process.env.REACT_APP_API_URL}/budgets/${id}/?_embed=transactions`
   );
   const data = await response.json();
@@ -11,7 +12,7 @@ export const fetchBudget = async ({ id }) => {
 
 export const fetchBudgetedCategories = async ({ id }) => {
   const response = await fetch(
-    `http://localhost:5000/budgets/${id}/budgetCategories`
+    `${port}/budgets/${id}/budgetCategories`
     // `${process.env.REACT_APP_API_URL}/budgets/${id}/budgetCategories`
   );
   const data = await response.json();
@@ -21,7 +22,7 @@ export const fetchBudgetedCategories = async ({ id }) => {
 
 export const addTransaction = async ({ budgetId, data }) => {
   const response = await fetch(
-    `http://localhost:5000/budgets/${budgetId}/transactions`,
+    `${port}/budgets/${budgetId}/transactions`,
     // `${process.env.REACT_APP_API_URL}/budgets/${budgetId}/transactions`,
     {
       method: "POST",
