@@ -1,6 +1,6 @@
 export const fetchBudget = async ({ id }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/budgets/${id}/?_embed=transactions`
+    `http://localhost:3001/budgets/${id}/?_embed=transactions`
   );
   const data = await response.json();
 
@@ -9,7 +9,7 @@ export const fetchBudget = async ({ id }) => {
 
 export const fetchBudgetedCategories = async ({ id }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/budgets/${id}/budgetCategories`
+    `http://localhost:3001/budgets/${id}/budgetCategories`
   );
   const data = await response.json();
 
@@ -18,7 +18,7 @@ export const fetchBudgetedCategories = async ({ id }) => {
 
 export const addTransaction = async ({ budgetId, data }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/budgets/${budgetId}/transactions`,
+    `http://localhost:3001/budgets/${budgetId}/transactions`,
     {
       method: "POST",
       headers: {
