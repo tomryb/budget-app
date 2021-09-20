@@ -1,6 +1,6 @@
 export const fetchBudget = async ({ id }) => {
   const response = await fetch(
-    `http://localhost:3001/budgets/${id}/?_embed=transactions`
+    `/budgets/${id}/?_embed=transactions`
   );
   const data = await response.json();
 
@@ -9,7 +9,7 @@ export const fetchBudget = async ({ id }) => {
 
 export const fetchBudgetedCategories = async ({ id }) => {
   const response = await fetch(
-    `http://localhost:3001/budgets/${id}/budgetCategories`
+    `/budgets/${id}/budgetCategories`
   );
   const data = await response.json();
 
@@ -18,7 +18,7 @@ export const fetchBudgetedCategories = async ({ id }) => {
 
 export const addTransaction = async ({ budgetId, data }) => {
   const response = await fetch(
-    `http://localhost:3001/budgets/${budgetId}/transactions`,
+    `/budgets/${budgetId}/transactions`,
     {
       method: "POST",
       headers: {
