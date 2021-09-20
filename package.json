@@ -27,12 +27,12 @@
     "styled-components": "^5.0.1",
     "styled-normalize": "^8.0.7"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 3001\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start:db": "json-server --watch db.json --port 3001 "
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
